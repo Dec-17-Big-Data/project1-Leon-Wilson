@@ -1,11 +1,13 @@
 package mapper;
+
 import java.io.IOException;
 
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
-public class GenderAnalysisQ2Mapper extends Mapper<LongWritable, Text, Text, Text>{
+public class GenderAnalysisQ2Mapper extends
+		Mapper<LongWritable, Text, Text, Text> {
 	@Override
 	  public void map(LongWritable key, Text value, Context context)
 	      throws IOException, InterruptedException {
@@ -22,21 +24,23 @@ public class GenderAnalysisQ2Mapper extends Mapper<LongWritable, Text, Text, Tex
 		  if(indicators[0].equals("SE") && !indicators[2].equals("CMPL") && indicators[indicators.length - 2].equals("FE")){
 			  if(countryCode.equals("USA")){
 				  outKey.append(valueSplit[0] + " " + valueSplit[2]);
-				  
-				  for(int i = 44; i < valueSplit.length ; i++){
-					  if(!valueSplit[i].equals("")){
-						  outValue.append(year + "," +valueSplit[i]);
-					  } else {
-						  outValue.append(year + ",N/A");
+					  for(int i = 44; i < valueSplit.length ; i++){
+						  try{
+							  if(!valueSplit[i].equals("")&& !Double.isNaN(Double.valueOf(valueSplit[i].replace("\",", "")))){
+								  outValue.append(year + "," +valueSplit[i].replace("\",", ""));
+							  } else {
+								  outValue.append(year + ",N/A");
+							  }
+						  }catch (NumberFormatException e){
+							  outValue.append(year + ",N/A");
+						  }
+						  year += 1;
+						  if(i + 1 != valueSplit.length){
+							  outValue.append(";");
+						  }
 					  }
-					  year += 1;
-					  if(i + 1 != valueSplit.length){
-						  outValue.append(";");
-					  }
-				  }
 				  context.write(new Text(outKey.toString()), new Text(outValue.toString()));
 			  }
 		  }
 
-	  }	
-}
+	  }}

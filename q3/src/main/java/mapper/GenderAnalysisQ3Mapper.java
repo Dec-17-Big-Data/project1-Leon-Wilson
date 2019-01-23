@@ -25,9 +25,13 @@ public class GenderAnalysisQ3Mapper extends Mapper<LongWritable, Text, Text, Tex
 			  outKey.append(valueSplit[0] + " " + valueSplit[2]);
 			  
 			  for(int i = 44; i < valueSplit.length ; i++){
-				  if(!valueSplit[i].equals("")){
-					  outValue.append(year + "," +valueSplit[i]);
-				  } else {
+				  try{
+					  if(!valueSplit[i].equals("")&& !Double.isNaN(Double.valueOf(valueSplit[i].replace("\",", "")))){
+						  outValue.append(year + "," +valueSplit[i].replace("\",", ""));
+					  } else {
+						  outValue.append(year + ",N/A");
+					  }
+				  }catch(NumberFormatException e){
 					  outValue.append(year + ",N/A");
 				  }
 				  year += 1;

@@ -14,7 +14,7 @@ public class GenderAnalysisQ1Reducer extends Reducer<Text, Text, Text, DoubleWri
 		  
 		  for(Text t : values){
 			  Double d = new Double(t.toString());
-			  if(d > 30.0){
+			  if(d < 30.0){
 				  context.write(key, new DoubleWritable(d));
 			  }
 		  }

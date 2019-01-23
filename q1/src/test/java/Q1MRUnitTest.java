@@ -24,14 +24,14 @@ public class Q1MRUnitTest {
 	private ReduceDriver<Text, Text, Text, DoubleWritable> reduceDriver;
 	private MapReduceDriver<LongWritable, Text, Text, Text, Text, DoubleWritable> mapReduceDriver;
 	
-	private Text input = new Text("United States\",\"USA\",\"Gross graduation ratio, tertiary, female (%)\",\"SE.TER.CMPL.FE.ZS\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"35.85857\",\"37.8298\",\"37.43131\",\"38.22037\",\"39.18913\",\"39.84185\",\"40.23865\",\"41.26198\",\"42.00725\",\"42.78946\",\"43.68347\",\"\",\"46.37914\",\"47.68032\",\"\",\"\",\"\",\"");
+	private Text input = new Text("United States\",\"USA\",\"Gross graduation ratio, tertiary, female (%)\",\"SE.TER.CMPL.FE.ZS\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"35.85857\",\"37.8298\",\"37.43131\",\"38.22037\",\"39.18913\",\"39.84185\",\"40.23865\",\"41.26198\",\"42.00725\",\"42.78946\",\"43.68347\",\"\",\"46.37914\",\"10.68032\",\"\",\"\",\"\",\"");
 	private Text inputNoResult = new Text("Arab World\",\"ARB\",\"Gross graduation ratio, primary, female (%)\",\"SE.PRM.CMPL.FE.ZS\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"");
 
 	private Text mapperKey = new Text("United States Gross graduation ratio, tertiary, female (%)");
-	private Text mapperOUTPUT = new Text("47.68032");
+	private Text mapperOUTPUT = new Text("10.68032");
 	
 	private Text reducerKey = new Text("United States Gross graduation ratio, tertiary, female (%)");
-	private DoubleWritable reducerOUTPUT = new DoubleWritable(new Double("47.68032"));
+	private DoubleWritable reducerOUTPUT = new DoubleWritable(new Double("10.68032"));
 	
 	@Before
 	public void setUp(){

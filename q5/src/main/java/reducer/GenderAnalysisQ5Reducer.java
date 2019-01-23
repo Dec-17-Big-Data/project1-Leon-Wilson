@@ -34,10 +34,10 @@ public class GenderAnalysisQ5Reducer extends Reducer<Text, Text, Text, Text>  {
 					Double percentChange = (diff / oldValue) * 100;
 
 					val.append(d.format(percentChange));
-					val.append(",");
+					val.append("\t");
 				} catch (NumberFormatException e) {
 					val.append("None");
-					val.append(",");
+					val.append("\t");
 				} catch (Exception e){
 					e.printStackTrace();
 				}
@@ -65,10 +65,10 @@ public class GenderAnalysisQ5Reducer extends Reducer<Text, Text, Text, Text>  {
 					Double percentChange = (diff / oldValue) * 100;
 
 					val.append(d.format(percentChange));
-					val.append(","+oldValue+","+newValue);
+					val.append("\t"+oldValue+"\t"+newValue);
 				} catch (NumberFormatException e) {
 					val.append("None");
-					val.append(",");
+					val.append("\t");
 				} catch (Exception e){
 					e.printStackTrace();
 				}

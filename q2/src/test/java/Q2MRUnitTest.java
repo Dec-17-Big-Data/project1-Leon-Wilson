@@ -23,10 +23,9 @@ public class Q2MRUnitTest {
 	private MapReduceDriver<LongWritable, Text, Text, Text, Text, Text> mapReduceDriver;
 	
 	
-	private Text input = new Text("United States\",\"USA\",\"Educational attainment, completed Bachelor's or equivalent, population 25+ years, female (%)\",\"SE.TER.HIAT.BA.FE.ZS\",\"14.8\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"18.7\",\"\",\"\",\"\",\"\",\"22.2\",\"\",\"\",\"\",\"26.9\",\"28.10064\",\"28.02803\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"44.54951\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"35.37453\",\"36.00504\",\"37.52263\",\"\",\"38.44067\",\"39.15297\",\"39.89922\",\"40.53132\",\"41.12231\",\"20.18248\",\"20.38445\",\"20.68499\",\"");
-	
+	private Text input = new Text("United States\",\"USA\",\"Educational attainment, completed Bachelor's or equivalent, population 25+ years, female (%)\",\"SE.TER.HIAT.BA.FE.ZS\",\"14.8\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"18.7\",\"\",\"\",\"\",\"\",\"22.2\",\"\",\"\",\"\",\"26.9\",\"28.10064\",\"28.02803\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"44.54951\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"35.37453\",\"36.00504\",\"37.52263\",\"\",\"38.44067\",\"39.15297\",\"39.89922\",\"40.53132\",\"41.12231\",\"20.18248\",\"20.38445\",\"20.68499\",\"\",");
 	private Text mapperKey = new Text("United States Educational attainment, completed Bachelor's or equivalent, population 25+ years, female (%)");
-	private Text reducerKey = new Text("United States Educational attainment, completed Bachelor's or equivalent, population 25+ years, female (%) from 2000 to 2015");
+	private Text reducerKey = new Text("United States Educational attainment, completed Bachelor's or equivalent, population 25+ years, female (%) from 2000 to 2016");
 	
 	private Text mapperOUTPUT = new Text(
 			"2000,N/A;"
@@ -44,26 +43,28 @@ public class Q2MRUnitTest {
 			+ "2012,41.12231;"
 			+ "2013,20.18248;"
 			+ "2014,20.38445;"
-			+ "2015,20.68499");
+			+ "2015,20.68499;"
+			+ "2016,N/A");
 	
 	private Text reducerOUTPUT = new Text(
-			"None,"
-			+ "None,"
-			+ "None,"
-			+ "None,"
-			+ "1.78,"
-			+ "4.22,"
-			+ "None,"
-			+ "None,"
-			+ "1.84,"
-			+ "1.89,"
-			+ "1.6,"
-			+ "1.45,"
-			+ "-50.92,"
-			+ "0.99,"
-			+ "1.47,"
-			+ "-3.77,"
-			+ "35.37,"
+			"None\t"
+			+ "None\t"
+			+ "None\t"
+			+ "None\t"
+			+ "1.78\t"
+			+ "4.22\t"
+			+ "None\t"
+			+ "None\t"
+			+ "1.84\t"
+			+ "1.89\t"
+			+ "1.6\t"
+			+ "1.45\t"
+			+ "-50.92\t"
+			+ "0.99\t"
+			+ "1.47\t"
+			+ "None\t"
+			+ "-3.77\t"
+			+ "35.37\t"
 			+ "20.68");
 	
 	@Before

@@ -4,7 +4,6 @@ import mapper.GenderAnalysisQ3Mapper;
 import reducer.GenderAnalysisQ3Reducer;
 
 import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
@@ -51,9 +50,9 @@ public class GenderAnalysisDriver {
 	     * Start the MapReduce job and wait for it to finish.
 	     * If it finishes successfully, return 0. If not, return 1.
 	     */
-	    
+	    //job.setNumReduceTasks(0);
 	    job.setOutputKeyClass(Text.class);
-	    job.setOutputValueClass(IntWritable.class);
+	    job.setOutputValueClass(Text.class);
 	    boolean success = job.waitForCompletion(true);
 	    System.exit(success ? 0 : 1);
 	  }
