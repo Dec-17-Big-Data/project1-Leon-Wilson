@@ -9,6 +9,34 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
+/**
+ * 
+ * @author Leon Wilson
+ * 
+ Thought process:
+ * The thought process for this question was to find the female employment rate for each country and follow a similar
+ * approach to question 2 and 3
+ * 
+ *Approach:
+ * First I parsed through the data looking for the employment to population ratio for each country
+ * 
+ * Then I went through each of the columns of the fields starting at the year 2000 (44) and added their value to the end
+ * of the value output string (format: year,value;)
+ * 
+ * Next I performed the percent change function on each year (((newYear - oldYear)/oldYear) * 100)) and stored that
+ * value in the reducers output.
+ * 
+ * Finally, after going through all of the percent change functions for each year difference, I perform one last
+ * percent change function between the earliest year with data and the last year with data (((newYear - oldYear)/oldYear)/yearDifference * 100))
+ * and store that alongside the two values used at the end of the reducer output.
+ * 
+ * In post processing I removed any records that had an excess amount of empty spaces in their countries output and 
+ * displayed the information on a stem graph
+ * 
+ *Assumptions:
+ *I assumed that there were at least 44 columns in each field
+ *I assumed that the high and low year wouldn't be the same
+ */
 public class GenderAnalysisDriver {
 	public static void main(String[] args) throws Exception {
 
